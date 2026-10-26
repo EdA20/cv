@@ -1,0 +1,137 @@
+%%%%%%%%%%%%%%%%%
+% Визуальная версия CV (двухколоночная, altacv.cls v1.1.5).
+% Компилятор: pdfLaTeX.
+% Требуется файл altacv.cls из этого же проекта Overleaf.
+% Источник фактов: resume-facts.yaml (подтверждено 2026-10-23, обновлено 2026-10-24).
+%%%%%%%%%%%%%%%%%
+
+\documentclass[9pt,a4paper,ragged2e]{altacv}
+
+\geometry{left=1.1cm,right=1.1cm,top=1.2cm,bottom=1.2cm,columnsep=1cm}
+\usepackage[english,russian]{babel}
+\usepackage{hyperref}
+\usepackage{paracol}
+
+\ifxetexorluatex
+  \setmainfont{Carlito}
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[default]{lato}
+\fi
+
+\definecolor{VividPurple}{HTML}{000000}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{2E2E2E}
+\colorlet{heading}{VividPurple}
+\colorlet{accent}{VividPurple}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+\begin{document}
+\name{Ачикян Эдуард}
+\personalinfo{%
+  \email{\href{mailto:ed9119@mail.ru}{ed9119@mail.ru}}
+  \printinfo{\faTelegram}{\href{https://t.me/edooam}{@edooam}}
+  \phone{+7-926-957-73-83}
+  \location{Москва}
+  \github{\href{https://github.com/EdA20}{github.com/EdA20}}
+}
+
+\begin{fullwidth}
+\makecvheader
+\end{fullwidth}
+
+\AtBeginEnvironment{itemize}{\medium}
+
+\columnratio{0.5}
+\begin{paracol}{2}
+
+% ==================== ЛЕВАЯ КОЛОНКА ====================
+\cvsection{Опыт}
+
+\cvevent{Сбер, Аналитическое управление}{Аналитик индексной команды}{Май 2024 -- настоящее время}{Москва}
+\skipsmall
+\begin{itemize}[leftmargin=12pt]
+  \item Разработка инвестиционных индексов Сбера - написание методологии расчёта, реализация алгоритма расчета на Python, согласование с другими департаментами (правовой, комплаенс, риски, трейдинг), публикация значений на портале
+  \item Передача сигналов ребалансировки и хеджированию позиций для трейдинг деска по индексам
+  \item Разработка на python отчета по контролю за опубликованными значениями
+  \item Сбор рыночных данных через REST API (Interfax, MOEX)
+  \item С использованием LLM переработал Python-библиотеку для работы с API внутренней системы
+\end{itemize}
+
+\divider
+
+\cvevent{Райффайзенбанк}{Аналитик рыночных рисков}{Июнь 2023 -- Май 2024}{Москва}
+\skipsmall
+\begin{itemize}[leftmargin=12pt]
+  \item Построение структуры ПИФ и ДУ в разрезе активов по каждому клиенту
+  \item Контроль состава портфелей ДУ с учётом риск-профиля клиентов
+  \item Автоматизация сбора рыночных данных через REST API Interfax, Cbonds, MOEX (Airflow, Gitlab)
+  \item Интеграция новых таблиц из БД (SQL) в отчеты, взаимодействие с IT подразделением как бизнес-заказчик (Jira, Confluence)
+  \item Автоматизация построения отчетности по рискам (VAR, лимит контрагентского риска)
+\end{itemize}
+
+\divider
+
+\cvevent{Банк Открытие}{Специалист по рыночным рискам}{Июнь 2022 -- Июнь 2023}{Москва}
+\skipsmall
+\begin{itemize}[leftmargin=12pt]
+  \item Ускорение расчёта ТСС структурных продуктов методом Монте-Карло, реализовав алгоритм на Python: 15 минут вместо 5 часов
+  \item Расчет риск-сценариев и греков по структурным продуктам (delta, gamma vega)
+  \item Расчет VaR по портфелю облигаций через G-spread
+  \item Сбор рыночных данных (selenium + requests), построение базы данных (SQL)
+\end{itemize}
+
+\switchcolumn
+
+% ==================== ПРАВАЯ КОЛОНКА ====================
+
+\cvsection{Навыки}
+\begin{itemize}[leftmargin=12pt]
+  \item \textbf{Python:} pandas, numpy, scikit-learn, pytorch, matplotlib, requests, selenium, langgraph/langchain
+  \item \textbf{Risk:} VaR, CVaR, Stress Test, Monte-Carlo, Sharpe/Sortino ratio
+  \item \textbf{Данные:} SQL, Airflow, REST API, Hive, Hadoop, PySpark, Greenplum, ClickHouse
+  \item \textbf{Инфраструктура:} Docker, FastAPI, Git/GitLab, DVC, MLflow, Hydra, pre-commit, Jira, Confluence
+  \item \textbf{Языки:} русский; английский --- B2 (Upper-Intermediate)
+\end{itemize}
+
+\cvsection{Проекты}
+
+\cvevent{Portfolio Risk Agent}{LLM-агент для риск-анализа портфеля}{2026}{}
+AI-агент на LangGraph, который оценивает качество ребалансировки портфеля с точки зрения рыночного риска и новостного контекста (\hyperlink{https://github.com/EdA20/PorfolioRiskAgent}{ссылка})
+
+\divider
+
+\cvevent{Investment Portfolio Construction}{Магистерская ВКР НИУ ВШЭ}{2025}{}
+ML-стратегия, аллоцирующая капитал между индексом IMOEX и денежным рынком (\hyperlink{https://github.com/EdA20/Investment-Portfolio-Construction}{ссылка})
+
+\cvsection{Образование}
+
+\cvevent{НИУ ВШЭ}{Магистратура, «Нейронные сети»}{Сентябрь 2022 -- Июнь 2025}{}
+\begin{itemize}[leftmargin=12pt]
+    \item \textbf{ML/DL/RL:} sklearn, pytorch, gymnasium
+    \item \textbf{Big Data:} Hive, Hadoop, PySpark, Greenplum, ClickHouse
+    \item \textbf{MLOps:} Git, DVC, pre-commit, Hydra, MLflow, wandb
+    \item \textbf{DevOps:} Docker, FastAPI, Airflow
+\end{itemize}
+
+\divider
+
+\cvevent{НИУ ВШЭ}{Бакалавриат, «Экономика»}{Сентябрь 2018 -- Июнь 2022}{}
+\begin{itemize}[leftmargin=12pt]
+    \item Теория вероятностей и математическая статистика
+    \item Эконометрика
+    \item Финансовый рынки
+    \item Корпоративные финансы
+\end{itemize}
+
+\divider
+
+\cvevent{МФТИ}{Курс «Глубокое обучение и компьютерное зрение»}{Сентябрь 2025 -- Февраль 2026}{}
+
+\end{paracol}
+\end{document}
